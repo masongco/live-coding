@@ -1,1 +1,30 @@
-<p>pet-manager works!</p>
+<div class="container">
+    <h1>Pet Manager</h1>
+
+    <div class="form">
+        <label for="dogName"> Dog name:</label>
+        <input id="dogName" type="text" [(ngModel)]="dogName" />
+        <button (click)="addPet()">Add pet</button>
+    </div>
+
+    <div class="board">
+        <div class="column">
+            <h5>Listed</h5>
+            <div *ngFor="let pet of filterByStatus('listed')">
+                {{ pet.name }} <button (click)="nextStatus(pet)">next</button>
+            </div>
+        </div>
+        <div class="column">
+            <h5>Examining</h5>
+            <div *ngFor="let pet of filterByStatus('examining')">
+                {{ pet.name }} <button (click)="nextStatus(pet)">next</button>
+            </div>
+        </div>
+        <div class="column">
+            <h5>Finally Back to Hooman</h5>
+            <div *ngFor="let pet of filterByStatus('finally_back_to_hooman')">
+                {{ pet.name }} <button (click)="nextStatus(pet)">next</button>
+            </div>
+        </div>
+    </div>
+</div>

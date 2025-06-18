@@ -16,4 +16,13 @@ export class PetService {
     this.pets.push(newPet);
     this.petSubject.next(this.pets);
   }
+
+  moveToNextStatus(pet: Pet){
+    const statusFlow = ['listed', 'examining', 'finally_back_to_hooman'];
+    const currentIndex = statusFlow.indexOf(pet.status);
+    if (currentIndex < statusFlow.length - 1){
+      pet.status = statusFlow[currentIndex + 1] as any;
+      this.petSubject.next(this.pets)
+    }
+  }
 }
